@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Cliente - Abogados Lex</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+    header { background-color: #1e1e2f; color: white; padding: 1rem; text-align: center; }
+    main { padding: 2rem; }
+    h2 { margin-top: 2rem; }
+    .btn { background-color: #0077b6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer; margin-top: 1rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.75rem; border: 1px solid #ccc; text-align: left; }
+    th { background-color: #e0e0e0; }
+    .form-section { background-color: #ffffff; padding: 1rem; margin-top: 2rem; border-radius: 5px; display: none; }
+    input, select, textarea { width: 100%; padding: 0.5rem; margin: 0.5rem 0 1rem 0; border: 1px solid #ccc; border-radius: 5px; }
+    .logout { text-align: right; margin-top: -2rem; }
+    .logout a { color: white; text-decoration: underline; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Panel del Cliente</h1>
+    <div class="logout"><a href="cliente_login.html">Cerrar sesión</a></div>
+  </header>
+  <main>
+
+    <section>
+      <h2>Mis Causas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo de Causa</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Documento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>Familia</td>
+            <td>En Evaluación</td>
+            <td>2025-06-18</td>
+            <td><a href="#">Ver PDF</a></td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Tránsito</td>
+            <td>Aceptada</td>
+            <td>2025-06-10</td>
+            <td><a href="#">Ver PDF</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Nueva Solicitud</h2>
+      <button class="btn" onclick="document.querySelector('.form-section').style.display='block'">+ Crear Solicitud</button>
+
+      <div class="form-section">
+        <form onsubmit="event.preventDefault(); alert('Solicitud enviada.');">
+          <label for="tipo">Tipo de Causa</label>
+          <select id="tipo" required>
+            <option value="">Seleccione</option>
+            <option value="familia">Familia</option>
+            <option value="civil">Civil</option>
+            <option value="transito">Tránsito</option>
+            <option value="salud">Salud</option>
+            <option value="inmobiliario">Inmobiliario</option>
+          </select>
+
+          <label for="motivo">Motivo</label>
+          <input type="text" id="motivo" required>
+
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" rows="4" required></textarea>
+
+          <label for="documento">Documento adjunto (opcional)</label>
+          <input type="file" id="documento">
+
+          <button type="submit" class="btn">Enviar Solicitud</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
