@@ -6,10 +6,18 @@
   <title>Panel Cliente - Abogados Lex</title>
   <style>
     body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
-    header { background-color: #1e1e2f; color: white; padding: 1rem; text-align: center; }
+    header { background-color: #1e1e2f; color: white; padding: 1rem; text-align: center; position: relative; }
     main { padding: 2rem; }
     h2 { margin-top: 2rem; }
-    .btn { background-color: #0077b6; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer; margin-top: 1rem; }
+    .btn {
+      background-color: #0077b6;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
     table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
     th, td { padding: 0.75rem; border: 1px solid #ccc; text-align: left; }
     th { background-color: #e0e0e0; }
@@ -17,10 +25,26 @@
     input, select, textarea { width: 100%; padding: 0.5rem; margin: 0.5rem 0 1rem 0; border: 1px solid #ccc; border-radius: 5px; }
     .logout { text-align: right; margin-top: -2rem; }
     .logout a { color: white; text-decoration: underline; font-size: 0.9rem; }
+    .perfil-link {
+      position: absolute;
+      left: 1rem;
+      top: 1.25rem;
+    }
+    .perfil-link a {
+      color: white;
+      background-color: #0077b6;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <header>
+    <div class="perfil-link">
+      <a href="cliente_editar_perfil.html" target="_blank">Editar Perfil</a>
+    </div>
     <h1>Panel del Cliente</h1>
     <div class="logout"><a href="cliente_login.html">Cerrar sesión</a></div>
   </header>

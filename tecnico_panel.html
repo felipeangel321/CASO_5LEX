@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel Cliente - Abogados Lex</title>
+  <title>Panel Técnico Jurídico - Abogados Lex</title>
   <style>
     body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
     header { background-color: #1e1e2f; color: white; padding: 1rem; text-align: center; }
@@ -44,7 +44,7 @@
             <td>001</td>
             <td>Juan Pérez</td>
             <td>Familia</td>
-            <td>En Evaluación</td>
+            <td>Pendiente</td>
             <td>2025-06-18</td>
             <td><a href="#">Ver PDF</a></td>
           </tr>
@@ -67,6 +67,7 @@
         </tbody>
       </table>
     </section>
+
     <section>
       <h2>Presupuestos</h2>
       <table>
@@ -119,3 +120,95 @@
           <button type="submit" class="btn">Crear Presupuesto</button>
         </form>
       </div>
+    </section>
+
+    <section>
+      <h2>Registrar Pagos</h2>
+      <button class="btn" onclick="document.getElementById('formulario-pago').style.display='block'">+ Registrar Pago</button>
+
+      <div id="formulario-pago" class="form-section">
+        <form onsubmit="registrarPago(event)">
+          <label for="pago-id-cliente">ID Cliente</label>
+          <input type="text" id="pago-id-cliente" required>
+
+          <label for="pago-id-causa">ID de Causa</label>
+          <input type="text" id="pago-id-causa" required>
+
+          <label for="pago-monto">Monto Pagado</label>
+          <input type="number" id="pago-monto" min="1" required>
+
+          <label for="pago-fecha">Fecha del Pago</label>
+          <input type="date" id="pago-fecha" required>
+
+          <label for="pago-medio">Medio de Pago</label>
+          <select id="pago-medio" required>
+            <option value="">Seleccione</option>
+            <option>Efectivo</option>
+            <option>Transferencia</option>
+            <option>Tarjeta</option>
+            <option>Otro</option>
+          </select>
+
+          <label for="pago-comprobante">Comprobante (opcional)</label>
+          <input type="file" id="pago-comprobante">
+
+          <button type="submit" class="btn">Registrar Pago</button>
+        </form>
+      </div>
+
+      <div class="form-section" style="display: block;">
+        <h3>Pagos Registrados</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID Cliente</th>
+              <th>ID Causa</th>
+              <th>Monto</th>
+              <th>Fecha</th>
+              <th>Medio</th>
+              <th>Comprobante</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-pagos">
+            <!-- pagos simulados -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function registrarPago(event) {
+      event.preventDefault();
+
+      const idCliente = document.getElementById('pago-id-cliente').value;
+      const idCausa = document.getElementById('pago-id-causa').value;
+      const monto = parseFloat(document.getElementById('pago-monto').value);
+      const fecha = document.getElementById('pago-fecha').value;
+      const medio = document.getElementById('pago-medio').value;
+      const archivo = document.getElementById('pago-comprobante').files[0];
+
+      if (isNaN(monto) || monto <= 0) {
+        alert('El monto debe ser mayor a 0.');
+        return;
+      }
+
+      const tabla = document.getElementById('tabla-pagos');
+      const fila = document.createElement('tr');
+      fila.innerHTML = `
+        <td>${idCliente}</td>
+        <td>${idCausa}</td>
+        <td>$${monto.toLocaleString()}</td>
+        <td>${fecha}</td>
+        <td>${medio}</td>
+        <td>${archivo ? archivo.name : 'No adjunto'}</td>
+      `;
+      tabla.appendChild(fila);
+
+      alert('Pago registrado correctamente.');
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>

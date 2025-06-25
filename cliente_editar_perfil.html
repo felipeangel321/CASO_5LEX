@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Perfil - Cliente</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .form-box {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.25rem;
+      text-align: left;
+    }
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button, .volver {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      display: inline-block;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Editar Perfil</h2>
+    <form onsubmit="event.preventDefault(); alert('Perfil actualizado exitosamente.');">
+      <label>Nombre completo</label>
+      <input type="text" value="Juan Pérez" required />
+
+      <label>RUT</label>
+      <input type="text" value="12.345.678-9" readonly />
+
+      <label>Correo electrónico</label>
+      <input type="email" value="juanperez@email.com" readonly />
+
+      <label>Contraseña</label>
+      <input type="password" placeholder="Nueva contraseña" required />
+
+      <button type="submit">Guardar Cambios</button>
+    </form>
+
+    <a href="cliente_panel.html" class="volver">← Volver al Panel</a>
+  </div>
+</body>
+</html>
